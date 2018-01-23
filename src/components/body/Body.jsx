@@ -24,7 +24,7 @@ const styles ={
       </div>
 
       <div>
-        <SuggestedFeed />
+        <SuggestedFeed suggestedFeed={props.suggestedFeed}/>
       </div>
     </div>
   );
