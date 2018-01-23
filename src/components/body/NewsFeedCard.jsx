@@ -22,7 +22,6 @@ class NewsFeedCard extends React.Component {
     this.setState({likeStatus: true})
       this.setState({likeText: 'Like'})
       console.log(this.state.likeStatus);
-
   }
 
   render(){

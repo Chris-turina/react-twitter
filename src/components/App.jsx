@@ -11,9 +11,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterNewsFeed: []
+      masterNewsFeed: [],
+      masterSuggestedFeed: []
     };
     this.handleAddingNewNewsToList = this.handleAddingNewNewsToList.bind(this);
+    this.handleAddingNewSuggestedToList = this.handleAddingNewSuggestedToList.bind(this);
   }
 
   handleAddingNewNewsToList(newNewsCard) {
@@ -22,12 +24,18 @@ class App extends React.Component {
     this.setState({masterNewsFeed: newMasterNewsFeed});
   }
 
+  handleAddingNewSuggestedToList(newSuggestedCard) {
+    let newMasterSuggestedFeed = this.state.masterSuggestedFeed.slice();
+    newMasterSuggestedFeed.push(newSuggestedCard);
+    this.setState({masterSuggestedFeed: newMasterSuggestedFeed});
+  }
+
   render(){
     return(
       <div>
         <Header/>
         <Switch>
-          <Route exact path='/' render={()=><Body newsFeed={this.state.masterNewsFeed} />} />
+          <Route exact path='/' render={()=><Body newsFeed={this.state.masterNewsFeed} suggestedFeed={this.state.masterSuggestedFeed}/>} />
           <Route path='/newnewsfeedform' render={()=><NewNewsFeedForm onNewNewsCardCreation={this.handleAddingNewNewsToList} />} />
         </Switch>
       </div>
